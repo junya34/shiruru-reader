@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHIRURU 受け渡しリンク生成</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./jsQR.js"></script>
+</head>
+<body>
+
+<!-- スキャン画面 -->
+<div id="page-scan" class="page">
+  <h1>SHIRURU 受け渡しリンク生成</h1>
+
+  <div class="card">
+    <div class="card-title">メンバーID取得</div>
+
+    <div id="camera-wrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="canvas"></canvas>
+      <div class="scan-overlay">
+        <div class="scan-frame"></div>
+        <div class="scan-line"></div>
+      </div>
+      <div class="cam-hint">ドリンク注文QRコードを枠内に合わせてください</div>
+    </div>
+
+    <div id="scan-status">カメラを起動してスキャンしてください</div>
+    <button class="btn btn-primary" id="cam-btn" onclick="startCamera()">カメラを起動</button>
+
+    <div class="divider">または手動入力</div>
+    <div class="manual-row">
+      <input type="number" id="manual-id" class="text-input" placeholder="member_id を入力">
+      <button class="btn-sm" onclick="applyManual()">確定</button>
+    </div>
+  </div>
+</div>
+
+<!-- リンク一覧画面 -->
+<div id="page-result" class="page" style="display:none">
+  <div class="page-header">
+    <button class="back-btn" onclick="reset()">&#8592;</button>
+    <h1>受け渡しリンク一覧</h1>
+  </div>
+
+  <div class="card">
+    <div class="member-box">
+      <div class="mid" id="mid-display"></div>
+      <div class="msub" id="mid-sub"></div>
+    </div>
+    <ul class="link-list" id="link-list"></ul>
+  </div>
+</div>
+
+<script src="./app.js"></script>
+</body>
+</html>
