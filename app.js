@@ -77,11 +77,13 @@ function extractId(url) {
 }
 
 function applyManual() {
-  const val = document.getElementById('manual-id').value.trim();
-  if (!val || !/^\d+$/.test(val)) { setStatus('有効な数字を入力してください', 'err'); return; }
+  const val = document.getElementById('manual-url').value.trim();
+  if (!val) { setStatus('URLを入力してください', 'err'); return; }
+  const id = extractId(val);
+  if (!id) { setStatus('URLにid=が見つかりませんでした', 'err'); return; }
   stopCamera();
-  setStatus('✓ 手動入力で設定しました', 'ok');
-  showResult(val, '手動入力');
+  setStatus('✓ URLからIDを取得しました', 'ok');
+  showResult(id, 'URL入力');
 }
 
 function setStatus(msg, cls) {
@@ -132,7 +134,7 @@ function reset() {
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 
-document.getElementById('manual-id').addEventListener('keydown', e => {
+document.getElementById('manual-url').addEventListener('keydown', e => {
   if (e.key === 'Enter') applyManual();
 });
 
