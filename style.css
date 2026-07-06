@@ -12,7 +12,12 @@ body {
   padding: 24px 16px 48px; min-height: 100vh;
 }
 
-h1 { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+h1 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+
+.app-desc {
+  font-size: 13px; color: #8e8e93; text-align: center;
+  max-width: 480px; line-height: 1.6; margin-bottom: 20px;
+}
 
 /* リンク一覧ページのヘッダー */
 .page-header {
