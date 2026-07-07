@@ -86,11 +86,12 @@ function onQR(url) {
 }
 
 function extractId(url) {
+  if (!url.includes('shirucafe')) return null;
   try {
     const id = new URL(url).searchParams.get('id');
-    if (id && /^\d+$/.test(id)) return id;
+    if (id && /^\d{6}$/.test(id)) return id;
   } catch (_) {
-    const m = url.match(/[?&]id=(\d+)/);
+    const m = url.match(/[?&]id=(\d{6})/);
     if (m) return m[1];
   }
   return null;
